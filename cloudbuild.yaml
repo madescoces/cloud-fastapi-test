@@ -1,0 +1,11 @@
+options:
+  logging: GCS_ONLY
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', '--project', '$PROJECT_ID', 
+         '-q', '$_GAE_PROMOTE', '-v', '$_GAE_VERSION']
+logsBucket: '$_LOGS_BUCKET'
+substitutions:
+  _GAE_PROMOTE: '--promote'
+  _GAE_VERSION: 'optilog-prod-v1'
+  _LOGS_BUCKET: 'gs://testing-backend-logs'
