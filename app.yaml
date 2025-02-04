@@ -1,0 +1,7 @@
+runtime: python312  # O usa python311 si 3.12 no está disponible
+entrypoint: uvicorn main:app --host 0.0.0.0 --port $PORT
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always
